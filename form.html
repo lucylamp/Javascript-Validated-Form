@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Validated Form Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript">
+      document.getElementById("contact_form");
+        function validateForm(){
+           var firstname = document.getElementById('firstname');
+           var email = document.getElementById('email');
+           var subject = document.getElementById('subject');
+           var message = document.getElementById('message');
+           if( document.contact_form.firstname.value == "" )
+             {
+               alert( "Please enter your first name." );
+               document.contact_form.firstname.focus() ;
+               return false;
+             }
+           if( document.contact_form.email.value == "" )
+             {
+               alert( "Please provide your email address." );
+               document.contact_form.email.focus() ;
+               return false;
+             }   
+            if( document.contact_form.subject.value == "" )
+            {
+              alert( "Please enter a subject for your email." );
+              document.contact_form.subject.focus() ;
+              return false;
+            }
+            if( document.contact_form.message.value == "" )
+            {
+              alert( "Please type your message." );
+              document.contact_form.message.focus() ;
+              return false;
+            }
+            if( [document.contact_form.firstname.value, document.contact_form.email.value, document.contact_form.subject.value, document.contact_form.message.value ] != "" )
+             {
+              return true;
+             }
+           }
+    </script>
+  </head>
+  <body>
+    <div id="form-heading" class="about-heading"> 
+      <h2>Contact Form</h2>
+    </div>
+    <div id="form-area" class="about-area">
+      <div id="form-container" class="about-text-container">
+        <div class="form">
+          <form name="contact_form" id="contact_form"  method="post" action="contact_form_insert.php"  enctype="multipart/form-data" onsubmit="return validateForm();">
+            <ul>
+              <li>
+                <input type="text" id="firstname" name="firstname" placeholder="Name">
+              </li>
+              <li>
+                <input type="text" id="email" name="email" placeholder="Email">
+              </li>
+               <li>
+                <input type="text" id="subject" name="subject" placeholder="Subject">
+              </li>
+              <li>
+                <textarea id="message" name="message" placeholder="Message"></textarea>
+              </li>
+              <li>
+                 <div class="submit-wrap">
+                  <input class="submit" type="submit" value="Send"/>
+                </div>
+              </li> 
+            </ul> 
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
